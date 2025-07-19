@@ -1,17 +1,17 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 
-const projects = [
+const allProjects = [
   {
     title: "Spa Website",
     category: "Beauty & Wellness",
-    description: "Luxurious spa website with booking system, service showcase, and online appointment management.",
+    description: "Luxurious spa website with booking system, service showcase, and online appointment management. Features include responsive design, interactive galleries, and seamless payment integration.",
     image: project1,
     tech: ["React", "Node.js", "MongoDB"],
     liveUrl: "#",
@@ -20,7 +20,7 @@ const projects = [
   {
     title: "Skill Craft Expense Manager",
     category: "Finance App",
-    description: "Smart expense tracking application with analytics, budget management, and financial insights.",
+    description: "Smart expense tracking application with analytics, budget management, and financial insights. Includes data visualization, automated categorization, and export features.",
     image: project2,
     tech: ["React", "TypeScript", "Chart.js"],
     liveUrl: "#",
@@ -29,9 +29,36 @@ const projects = [
   {
     title: "Fundraiser Platform",
     category: "Social Impact",
-    description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools.",
+    description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools. Features include goal tracking, donor management, and campaign analytics.",
     image: project3,
     tech: ["Next.js", "Stripe", "PostgreSQL"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "E-commerce Dashboard",
+    category: "Business Tools",
+    description: "Comprehensive admin dashboard for e-commerce businesses with inventory management, sales analytics, and customer insights.",
+    image: project1,
+    tech: ["React", "Redux", "Material-UI"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Food Delivery App",
+    category: "Mobile App",
+    description: "Modern food delivery application with real-time tracking, payment integration, and restaurant management system.",
+    image: project2,
+    tech: ["React Native", "Firebase", "Stripe"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Real Estate Platform",
+    category: "Property Management",
+    description: "Property listing platform with advanced search, virtual tours, and agent management system.",
+    image: project3,
+    tech: ["Vue.js", "Laravel", "MySQL"],
     liveUrl: "#",
     githubUrl: "#"
   }
@@ -39,23 +66,34 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-muted/30">
+    <div className="min-h-screen py-24">
       <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Link to="/">
+            <Button variant="ghost" size="sm" className="group">
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
+
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="gradient-text">Work</span>
-          </h2>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            All <span className="gradient-text">Projects</span>
+          </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore some of our recent projects and see how we've helped businesses transform their online presence.
+            Explore our complete portfolio and see how we've helped businesses transform their online presence.
           </p>
         </div>
         
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
+          {allProjects.map((project, index) => (
             <Card 
               key={project.title}
               className="glass hover-lift group overflow-hidden"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -67,10 +105,10 @@ const Projects = () => {
                 
                 {/* Hover Actions */}
                 <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30">
+                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30">
                     <ExternalLink className="w-4 h-4" />
                   </Button>
-                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30">
+                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30">
                     <Github className="w-4 h-4" />
                   </Button>
                 </div>
@@ -119,17 +157,8 @@ const Projects = () => {
             </Card>
           ))}
         </div>
-        
-        <div className="text-center mt-16">
-          <Link to="/projects">
-            <Button variant="hero" size="lg" className="group">
-              View All Projects
-              <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

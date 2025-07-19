@@ -45,11 +45,20 @@ const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="fade-up fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button variant="hero" size="xl" className="group">
+            <Button 
+              variant="hero" 
+              size="xl" 
+              className="group"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Let's Build Together
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="glass" size="xl">
+            <Button 
+              variant="glass" 
+              size="xl"
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               View Our Work
             </Button>
           </div>
