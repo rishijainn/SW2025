@@ -35,8 +35,8 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:hello@stackwise.dev" className="hover:text-primary transition-colors">
-                  hello@stackwise.dev
+                <a href="mailto:stackwise7@gmail.com" className="hover:text-primary transition-colors">
+                  stackwise7@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3 text-sm">

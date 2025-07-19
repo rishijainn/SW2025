@@ -8,29 +8,29 @@ import project3 from "@/assets/project-3.jpg";
 
 const projects = [
   {
-    title: "Bella Vista Restaurant",
-    category: "Restaurant Website",
-    description: "A modern restaurant website with online menu, reservations, and ordering system.",
+    title: "Spa Website",
+    category: "Beauty & Wellness",
+    description: "Luxurious spa website with booking system, service showcase, and online appointment management.",
     image: project1,
     tech: ["React", "Node.js", "MongoDB"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
-    title: "Serenity Spa",
-    category: "Beauty & Wellness",
-    description: "Elegant spa website with booking system and service showcase.",
+    title: "Skill Craft Expense Manager",
+    category: "Finance App",
+    description: "Smart expense tracking application with analytics, budget management, and financial insights.",
     image: project2,
-    tech: ["Next.js", "Tailwind", "Stripe"],
+    tech: ["React", "TypeScript", "Chart.js"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
-    title: "TechFlow Dashboard",
-    category: "SaaS Platform",
-    description: "Complete dashboard solution for business analytics and management.",
+    title: "Fundraiser Platform",
+    category: "Social Impact",
+    description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools.",
     image: project3,
-    tech: ["React", "TypeScript", "PostgreSQL"],
+    tech: ["Next.js", "Stripe", "PostgreSQL"],
     liveUrl: "#",
     githubUrl: "#"
   }

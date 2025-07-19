@@ -156,10 +156,10 @@ const Contact = () => {
                       Drop us a line and we'll get back to you within 24 hours.
                     </p>
                     <a 
-                      href="mailto:hello@stackwise.dev" 
+                      href="mailto:stackwise7@gmail.com" 
                       className="text-primary font-medium hover:text-primary/80 transition-colors"
                     >
-                      hello@stackwise.dev
+                      stackwise7@gmail.com
                     </a>
                   </div>
                 </div>
