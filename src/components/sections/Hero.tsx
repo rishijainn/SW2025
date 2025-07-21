@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
+import Logo from '@/components/sections/Logo'
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -27,8 +27,8 @@ const Hero = () => {
           {/* Logo/Brand */}
           <div className="fade-up">
             <div className="inline-flex items-center gap-2 text-primary font-bold text-xl mb-4">
-              <Sparkles className="w-6 h-6" />
-              STACKWISE
+              {/* <Logo className="w-6 h-6" /> */}
+            STACKWISE
             </div>
           </div>
           

@@ -11,6 +11,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     project: "",
     message: ""
   });
@@ -21,32 +22,54 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    
+    console.log(formData)
+
     try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          project: formData.project,
-          message: formData.message
-        }
+      // Using EmailJS for client-side email sending
+      const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_09kbn2p', // Replace with your EmailJS service ID
+          template_id: 'template_k34d6ni', // Replace with your EmailJS template ID
+          user_id: 'Dj5oba5dKzhr7hpRi', // Replace with your EmailJS public key
+          template_params: {
+            from_name: formData.name,
+            from_email: formData.email,
+            mobile_number: formData.mobile, // <- Add this line
+            to_email: 'stackwise7@gmail.com',
+            project_type: formData.project,
+            subject: `New Contact Form Submission - ${formData.project || 'General Inquiry'}`,
+            message: `
+                      New Contact Request
+
+                      Name: ${formData.name}
+                      Email: ${formData.email}
+                      Mobile: ${formData.mobile}
+                      Project Type: ${formData.project}
+                      
+                      Message:
+                      ${formData.message}
+                      `
+          }
+
+        }),
       });
 
-      if (error) {
-        throw error;
+      if (!emailjsResponse.ok) {
+        throw new Error('Failed to send email via EmailJS');
       }
 
       toast({
         title: "Message Sent Successfully!",
         description: "Thank you for reaching out. We'll get back to you within 24 hours.",
       });
-      
-      setFormData({ name: "", email: "", project: "", message: "" });
+
+      setFormData({ name: "", email: "", project: "", mobile: "", message: "" });
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
@@ -70,7 +93,7 @@ const Contact = () => {
             Ready to transform your online presence? Get in touch and let's discuss how we can bring your vision to life.
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card className="glass">
@@ -81,7 +104,7 @@ const Contact = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name *</Label>
@@ -108,8 +131,21 @@ const Contact = () => {
                       className="bg-muted/50 border-primary/20 focus:border-primary/40"
                     />
                   </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="mobile">Mobile Number</Label>
+                    <Input
+                      id="mobile"
+                      name="mobile"
+                      type="tel"
+                      value={formData.mobile}
+                      onChange={handleInputChange}
+                      placeholder="+91 98765 43210"
+                      className="bg-muted/50 border-primary/20 focus:border-primary/40"
+                    />
+                  </div>
+
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="project">Project Type</Label>
                   <select
@@ -128,7 +164,7 @@ const Contact = () => {
                     <option value="other">Other</option>
                   </select>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message *</Label>
                   <Textarea
@@ -142,11 +178,11 @@ const Contact = () => {
                     className="bg-muted/50 border-primary/20 focus:border-primary/40 resize-none"
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
+
+                <Button
+                  onClick={handleSubmit}
+                  variant="hero"
+                  size="lg"
                   className="w-full group"
                   disabled={isSubmitting}
                 >
@@ -159,10 +195,10 @@ const Contact = () => {
                     </>
                   )}
                 </Button>
-              </form>
+              </div>
             </CardContent>
           </Card>
-          
+
           {/* Contact Info */}
           <div className="space-y-8">
             <Card className="glass">
@@ -176,15 +212,15 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-2">
                       Drop us a line and we'll get back to you within 24 hours.
                     </p>
-                    <a 
-                      href="mailto:stackwise7@gmail.com" 
+                    <a
+                      href="mailto:stackwise7@gmail.com"
                       className="text-primary font-medium hover:text-primary/80 transition-colors"
                     >
                       stackwise7@gmail.com
                     </a>
                   </div>
                 </div>
-                
+
                 {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                     <Phone className="w-6 h-6 text-primary" />
@@ -202,7 +238,7 @@ const Contact = () => {
                     </a>
                   </div>
                 </div> */}
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-primary" />
@@ -217,7 +253,7 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-            
+
             {/* Quick Stats */}
             <Card className="glass">
               <CardContent className="p-8">

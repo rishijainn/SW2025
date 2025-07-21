@@ -88,7 +88,7 @@ const WhyUs = () => {
         </div>
         
         {/* Stats Section */}
-        <div className="mt-24 glass rounded-2xl p-8">
+        {/* <div className="mt-24 glass rounded-2xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
               <div className="text-4xl font-bold text-primary">20+</div>
@@ -107,7 +107,7 @@ const WhyUs = () => {
               <div className="text-sm text-muted-foreground">Days Delivery</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

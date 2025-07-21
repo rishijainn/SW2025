@@ -51,11 +51,11 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="font-bold text-lg">Services</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#services" className="hover:text-primary transition-colors">Website Design</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Full-Stack Development</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Landing Pages</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Portfolio & Blog</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">E-commerce Solutions</a></li>
+              <li><a  className="hover:text-primary transition-colors">Website Design</a></li>
+              <li><a  className="hover:text-primary transition-colors">Full-Stack Development</a></li>
+              <li><a  className="hover:text-primary transition-colors">Landing Pages</a></li>
+              <li><a  className="hover:text-primary transition-colors">Portfolio & Blog</a></li>
+              <li><a  className="hover:text-primary transition-colors">E-commerce Solutions</a></li>
             </ul>
           </div>
           
@@ -65,10 +65,9 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><a href="#team" className="hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#projects" className="hover:text-primary transition-colors">Our Work</a></li>
-              <li><a href="#testimonials" className="hover:text-primary transition-colors">Testimonials</a></li>
               <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              {/* <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li> */}
             </ul>
           </div>
         </div>
@@ -86,7 +85,7 @@ const Footer = () => {
             <span className="text-sm text-muted-foreground">Follow us:</span>
             <div className="flex gap-3">
               <a 
-                href="https://github.com/coders-clans" 
+                href="https://github.com/stackwise14" 
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Github className="w-4 h-4" />

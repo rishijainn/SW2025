@@ -3,38 +3,38 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/beauty.jpeg";
+import project2 from "@/assets/hotel.jpeg";
+import project3 from "@/assets/port.jpeg";
 
 const projects = [
   {
     title: "Spa Website",
     category: "Beauty & Wellness",
-    description: "Luxurious spa website with booking system, service showcase, and online appointment management.",
+    description: "Elegant spa platform with booking, service listings, and payment integration.",
     image: project1,
     tech: ["React", "Node.js", "MongoDB"],
-    liveUrl: "#",
+    liveUrl: "https://monarch-pi.vercel.app/",
     githubUrl: "#"
   },
   {
-    title: "Hotel Website",
-    category: "Hotel",
-    description: "Smart expense tracking application with analytics, budget management, and financial insights.",
+    title: "Cafe Website",
+    category: "Hotels",
+    description: "Modernise your cafe/hotels with a newly created websites.",
     image: project2,
-    tech: ["React", "TypeScript", "Chart.js"],
-    liveUrl: "#",
+    tech: ["React", "TypeScript"],
+    liveUrl: "https://cafe-cool.vercel.app/",
     githubUrl: "#"
   },
   {
-    title: "Secreteye",
-    category: "Social Impact",
-    description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools.",
+      title: "Portfolios",
+    category: "Personal",
+    description: "Showcase your skills, works to different people to grow your work.",
     image: project3,
-    tech: ["Next.js", "Stripe", "PostgreSQL"],
-    liveUrl: "#",
+    tech: ["MERN"],
+    liveUrl: "https://arjavs-inkwell-tales.vercel.app/",
     githubUrl: "#"
-  },
+  }
 ];
 
 const Projects = () => {
@@ -66,14 +66,7 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Hover Actions */}
-                <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30">
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
-                  <Button size="sm" className="bg-white/20 backdrop-blur-sm border border-white/30">
-                    <Github className="w-4 h-4" />
-                  </Button>
-                </div>
+               
               </div>
               
               <CardContent className="p-6 space-y-4">
@@ -108,12 +101,12 @@ const Projects = () => {
                   >
                     View Live →
                   </a>
-                  <a 
+                  {/* <a 
                     href={project.githubUrl}
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <Github className="w-4 h-4" />
-                  </a>
+                  </a> */}
                 </div>
               </CardContent>
             </Card>
