@@ -18,16 +18,16 @@ const allProjects = [
     githubUrl: "#"
   },
   {
-    title: "Skill Craft Expense Manager",
-    category: "Finance App",
-    description: "Smart expense tracking application with analytics, budget management, and financial insights. Includes data visualization, automated categorization, and export features.",
-    image: project2,
-    tech: ["React", "TypeScript", "Chart.js"],
+    title: "Secreteye",
+    category: "Social Impact",
+    description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools.",
+    image: project3,
+    tech: ["Next.js", "Stripe", "PostgreSQL"],
     liveUrl: "#",
     githubUrl: "#"
   },
   {
-    title: "Fundraiser Platform",
+    title: "Hotel",
     category: "Social Impact",
     description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools. Features include goal tracking, donor management, and campaign analytics.",
     image: project3,
@@ -36,7 +36,7 @@ const allProjects = [
     githubUrl: "#"
   },
   {
-    title: "E-commerce Dashboard",
+    title: "Footwear",
     category: "Business Tools",
     description: "Comprehensive admin dashboard for e-commerce businesses with inventory management, sales analytics, and customer insights.",
     image: project1,
@@ -45,7 +45,7 @@ const allProjects = [
     githubUrl: "#"
   },
   {
-    title: "Food Delivery App",
+    title: "Money Tree",
     category: "Mobile App",
     description: "Modern food delivery application with real-time tracking, payment integration, and restaurant management system.",
     image: project2,

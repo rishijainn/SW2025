@@ -4,30 +4,47 @@ import { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    name: "Sarah Chen",
-    role: "Restaurant Owner",
-    company: "Bella Vista",
-    content: "Stackwise transformed our online presence completely. Our new website has increased online orders by 150% and the QR menu system is a game-changer for our customers.",
+    name: "Arvind Kumar",
+    role: "CEO",
+    company: "Secreteye",
+    content: "Stackwise really helped us level up. Our website looks professional and modern, and the QR menu feature has made the customer experience much smoother. We've actually seen a noticeable rise in online orders!",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Michael Rodriguez",
-    role: "Salon Owner",
-    company: "Serenity Spa",
-    content: "The team delivered exactly what we envisioned and more. The booking system has streamlined our operations and the design perfectly captures our brand aesthetic.",
+    name: "Vipin Jain",
+    role: "Businessman",
+    company: "Vipin Footwear",
+    content: "I wanted a simple but smart solution for managing bookings and showing my products online. Stackwise understood my needs very well and gave me exactly what I was looking for — fast and efficiently.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Emily Johnson",
-    role: "Startup Founder",
-    company: "TechFlow",
-    content: "Working with Stackwise was incredible. They understood our vision from day one and delivered a stunning website that perfectly represents our brand and converts visitors into customers.",
+    name: "Vihan Upadhyay",
+    role: "Spa Owner",
+    company: "Monarch Beauty Spa",
+    content: "From the first call, Stackwise made everything easy. They listened to what I wanted, gave good suggestions, and built a beautiful website that even my regular clients compliment.",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Rashmi Patel",
+    role: "Boutique Owner",
+    company: "Rashmi Couture",
+    content: "I never thought having a website could impact my boutique this much! Thanks to Stackwise, customers now browse collections online and place orders directly. Their team is very cooperative.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Rajeev Sharma",
+    role: "Hotel Owner",
+    company: "Shivam Residency",
+    content: "The website and booking system built by Stackwise has made things much easier for both staff and guests. It looks professional and works smoothly on mobile as well, which is important for us.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=150&h=150&fit=crop&crop=face"
   }
 ];
+
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -29,8 +29,8 @@ const features = [
   },
   {
     icon: HeartHandshake,
-    title: "Personal Support",
-    description: "Direct communication with our team throughout the entire development process.",
+    title: "Bugdet-Friendly",
+    description: "Get your work done in the lowest market price with highest quality assurance.",
     color: "text-pink-400"
   },
   {
@@ -91,7 +91,7 @@ const WhyUs = () => {
         <div className="mt-24 glass rounded-2xl p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">50+</div>
+              <div className="text-4xl font-bold text-primary">20+</div>
               <div className="text-sm text-muted-foreground">Projects Delivered</div>
             </div>
             <div className="space-y-2">
@@ -103,7 +103,7 @@ const WhyUs = () => {
               <div className="text-sm text-muted-foreground">Support Available</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">3-7</div>
+              <div className="text-4xl font-bold text-primary">5-10</div>
               <div className="text-sm text-muted-foreground">Days Delivery</div>
             </div>
           </div>

@@ -123,7 +123,6 @@ const Contact = () => {
                     <option value="website-design">Website Design</option>
                     <option value="full-stack">Full-Stack Development</option>
                     <option value="landing-page">Landing Page</option>
-                    <option value="qr-menu">QR-Menu Website</option>
                     <option value="portfolio">Portfolio & Blog</option>
                     <option value="ecommerce">E-commerce Solution</option>
                     <option value="other">Other</option>
@@ -186,7 +185,7 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
@@ -202,7 +201,7 @@ const Contact = () => {
                       +91 98765 43210
                     </a>
                   </div>
-                </div>
+                </div> */}
                 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
@@ -211,7 +210,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold text-lg mb-2">Based In</h3>
                     <p className="text-muted-foreground">
-                      India<br />
+                      Jaipur, India<br />
                       Available for global projects
                     </p>
                   </div>
@@ -222,10 +221,10 @@ const Contact = () => {
             {/* Quick Stats */}
             <Card className="glass">
               <CardContent className="p-8">
-                <h3 className="font-bold text-lg mb-6 text-center">Why Choose Us?</h3>
+                <h3 className="font-bold text-lg mb-6 text-center">Our USP's</h3>
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1">3-7</div>
+                    <div className="text-3xl font-bold text-primary mb-1">5-10</div>
                     <div className="text-sm text-muted-foreground">Days Delivery</div>
                   </div>
                   <div>
@@ -233,7 +232,7 @@ const Contact = () => {
                     <div className="text-sm text-muted-foreground">Support</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-1">50+</div>
+                    <div className="text-3xl font-bold text-primary mb-1">20+</div>
                     <div className="text-sm text-muted-foreground">Projects</div>
                   </div>
                   <div>

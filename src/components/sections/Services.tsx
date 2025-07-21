@@ -12,45 +12,45 @@ import {
 const services = [
   {
     icon: Palette,
-    title: "Website Design",
+    title: "Static Website Design",
     description: "Beautiful, modern designs that capture your brand's essence and engage your audience.",
-    features: ["Custom UI/UX", "Brand Integration", "Mobile-First Design"],
-    startingPrice: "₹15,000"
+    features: ["Custom UI/UX", "Brand Integration"],
+    startingPrice: "₹7,000"
   },
   {
     icon: Code2,
-    title: "Full-Stack Development",
+    title: "Dynamic Website Development",
     description: "Complete web applications built with cutting-edge technologies for optimal performance.",
     features: ["React/Next.js", "Node.js Backend", "Database Design"],
-    startingPrice: "₹25,000"
+    startingPrice: "₹15,000"
   },
   {
     icon: Zap,
     title: "Landing Pages",
     description: "High-converting landing pages that turn visitors into customers with compelling design.",
     features: ["SEO Optimized", "Fast Loading", "Conversion Focused"],
-    startingPrice: "₹8,000"
+    startingPrice: "₹4,000"
   },
   {
     icon: Smartphone,
-    title: "QR-Menu Websites",
-    description: "Digital menu solutions for restaurants with QR code integration and easy management.",
-    features: ["QR Code Generation", "Easy Updates", "Mobile Optimized"],
-    startingPrice: "₹12,000"
+    title: "Application Development",
+    description: "Create your ideas into an app from complete functionalities and UI/UX to the publishing.",
+    features: ["React-Native","Performance Optimized"],
+    startingPrice: "₹50,000"
   },
   {
     icon: FileText,
     title: "Portfolio & Blog",
     description: "Showcase your work or share your thoughts with elegantly designed portfolio and blog sites.",
-    features: ["CMS Integration", "Blog Management", "Portfolio Showcase"],
-    startingPrice: "₹10,000"
+    features: [ "Blog Management", "Portfolio Showcase"],
+    startingPrice: "₹4,000"
   },
   {
     icon: ShoppingBag,
     title: "E-commerce Solutions",
     description: "Complete online stores with payment integration and inventory management systems.",
-    features: ["Payment Gateway", "Inventory System", "Admin Dashboard"],
-    startingPrice: "₹30,000"
+    features: ["Payment Gateway", "Inventory System"],
+    startingPrice: "₹40,000"
   }
 ];
 

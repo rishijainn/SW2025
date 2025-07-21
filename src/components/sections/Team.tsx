@@ -1,40 +1,40 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Github, Linkedin, Twitter } from "lucide-react";
-import teamAvatar1 from "@/assets/team-avatar-1.jpg";
-import teamAvatar2 from "@/assets/team-avatar-2.jpg";
-import teamAvatar3 from "@/assets/team-avatar-3.jpg";
+import teamAvatar1 from "@/assets/rishi.jpeg";
+import teamAvatar2 from "@/assets/prasham.jpeg";
+import teamAvatar3 from "@/assets/jenish.jpeg";
 
 const teamMembers = [
   {
     name: "Rishi Jain",
     role: "Full-Stack Developer",
-    bio: "Passionate about creating scalable web solutions with modern technologies.",
+    bio: "Passionate about creating scalable applications and innovative user experiences. Specializes in React, Node.js, and mobile development.",
     image: teamAvatar1,
     social: {
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/rishijainn",
+      linkedin: "https://www.linkedin.com/in/rishi-jain-1a6b65248/",
       twitter: "#"
     }
   },
   {
     name: "Prasham Jain",
-    role: "Frontend Specialist",
-    bio: "Crafting beautiful, responsive user interfaces that users love to interact with.",
+    role: "Full-Stack Developer",
+    bio: "Expert in modern web and app technologies and database architecture. Loves building robust backend systems and intuitive frontends.",
     image: teamAvatar2,
     social: {
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/prasham14",
+      linkedin: "https://www.linkedin.com/in/prashamjain14/",
       twitter: "#"
     }
   },
   {
     name: "Jenish Jain",
-    role: "Backend Engineer",
-    bio: "Building robust server architectures and optimizing performance at scale.",
+    role: "Web Developer",
+    bio: "Creative problem solver with expertise in MERN stack and UI designing. Focuses on performance optimization and marketing strategies.",
     image: teamAvatar3,
     social: {
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/jenishji",
+      linkedin: "https://www.linkedin.com/in/jenishjain14/",
       twitter: "#"
     }
   }
@@ -94,12 +94,7 @@ const Team = () => {
                   >
                     <Linkedin className="w-4 h-4" />
                   </a>
-                  <a 
-                    href={member.social.twitter} 
-                    className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </a>
+                
                 </div>
               </CardContent>
             </Card>

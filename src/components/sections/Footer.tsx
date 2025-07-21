@@ -33,21 +33,16 @@ const Footer = () => {
               Fast delivery, modern design, and exceptional support.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm">
-                <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:stackwise7@gmail.com" className="hover:text-primary transition-colors">
-                  stackwise7@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+919876543210" className="hover:text-primary transition-colors">
-                  +91 98765 43210
-                </a>
-              </div>
+           <div className="flex items-center gap-3 text-sm">
+  <Mail className="w-4 h-4 text-primary" />
+  <a href="mailto:stackwise7@gmail.com" className="hover:text-primary transition-colors">
+    stackwise7@gmail.com
+  </a>
+</div>
+
               <div className="flex items-center gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>India | Available Globally</span>
+                <span>Jaipur, India | Available Globally</span>
               </div>
             </div>
           </div>
@@ -59,7 +54,6 @@ const Footer = () => {
               <li><a href="#services" className="hover:text-primary transition-colors">Website Design</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Full-Stack Development</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Landing Pages</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">QR-Menu Websites</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Portfolio & Blog</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">E-commerce Solutions</a></li>
             </ul>
@@ -84,7 +78,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm text-muted-foreground text-center md:text-left">
-            © 2024 Stackwise. All rights reserved. | Built with ❤️ by the Stackwise team.
+            © 2024 Stackwise. All rights reserved. | Built by Coders Clan (The pioneers of Stackwise).
           </div>
           
           {/* Social Links */}
@@ -92,7 +86,7 @@ const Footer = () => {
             <span className="text-sm text-muted-foreground">Follow us:</span>
             <div className="flex gap-3">
               <a 
-                href="#" 
+                href="https://github.com/coders-clans" 
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Github className="w-4 h-4" />
@@ -104,17 +98,12 @@ const Footer = () => {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/stackwise14?igsh=cW84b3p1aXJlNWRx" 
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a 
-                href="#" 
-                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
+            
             </div>
           </div>
           

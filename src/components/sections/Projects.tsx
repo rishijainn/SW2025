@@ -18,8 +18,8 @@ const projects = [
     githubUrl: "#"
   },
   {
-    title: "Skill Craft Expense Manager",
-    category: "Finance App",
+    title: "Hotel Website",
+    category: "Hotel",
     description: "Smart expense tracking application with analytics, budget management, and financial insights.",
     image: project2,
     tech: ["React", "TypeScript", "Chart.js"],
@@ -27,14 +27,14 @@ const projects = [
     githubUrl: "#"
   },
   {
-    title: "Fundraiser Platform",
+    title: "Secreteye",
     category: "Social Impact",
     description: "Crowdfunding platform with payment gateway, social sharing, and campaign management tools.",
     image: project3,
     tech: ["Next.js", "Stripe", "PostgreSQL"],
     liveUrl: "#",
     githubUrl: "#"
-  }
+  },
 ];
 
 const Projects = () => {

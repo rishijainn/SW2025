@@ -7,6 +7,7 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
 };
 
 interface ContactEmailRequest {
@@ -17,91 +18,283 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  console.log(`Received ${req.method} request to ${req.url}`);
+  
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
+    console.log("Handling CORS preflight request");
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { name, email, project, message }: ContactEmailRequest = await req.json();
+    // Check if API key exists
+    const apiKey = Deno.env.get("RESEND_API_KEY");
+    console.log("API Key check:", apiKey ? `Found (${apiKey.substring(0, 8)}...)` : "Not found");
+    
+    if (!apiKey) {
+      console.error("RESEND_API_KEY environment variable is not set");
+      return new Response(
+        JSON.stringify({ 
+          error: "Email service configuration error",
+          success: false 
+        }),
+        {
+          status: 500,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
 
-    console.log("Sending email with data:", { name, email, project, message });
+    // Test API key by making a simple request first
+    console.log("Testing Resend API connection...");
+    try {
+      const testResponse = await fetch('https://api.resend.com/domains', {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+        },
+      });
+      console.log("Resend API test response status:", testResponse.status);
+      
+      if (!testResponse.ok) {
+        const errorText = await testResponse.text();
+        console.error("Resend API test failed:", errorText);
+        return new Response(
+          JSON.stringify({ 
+            error: "Invalid API key or Resend service unavailable",
+            success: false,
+            details: errorText
+          }),
+          {
+            status: 401,
+            headers: { 
+              "Content-Type": "application/json", 
+              ...corsHeaders 
+            },
+          }
+        );
+      }
+    } catch (testError) {
+      console.error("Failed to test Resend API:", testError);
+      return new Response(
+        JSON.stringify({ 
+          error: "Cannot connect to Resend API",
+          success: false,
+          details: testError instanceof Error ? testError.message : String(testError)
+        }),
+        {
+          status: 503,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
+    // Parse request body
+    let requestData: ContactEmailRequest;
+    try {
+      const bodyText = await req.text();
+      console.log("Request body:", bodyText);
+      requestData = JSON.parse(bodyText);
+    } catch (parseError) {
+      console.error("Failed to parse request body:", parseError);
+      return new Response(
+        JSON.stringify({ 
+          error: "Invalid JSON in request body",
+          success: false 
+        }),
+        {
+          status: 400,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
+    const { name, email, project, message } = requestData;
+
+    // Validate required fields
+    if (!name || !email || !message) {
+      console.log("Validation failed:", { name: !!name, email: !!email, message: !!message });
+      return new Response(
+        JSON.stringify({ 
+          error: "Missing required fields: name, email, and message are required",
+          success: false,
+          received: { name: !!name, email: !!email, project: !!project, message: !!message }
+        }),
+        {
+          status: 400,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.log("Invalid email format:", email);
+      return new Response(
+        JSON.stringify({ 
+          error: "Invalid email format",
+          success: false 
+        }),
+        {
+          status: 400,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
+    console.log("Processing valid request:", { name, email, project: project || 'Not specified' });
 
     // Send notification email to Stackwise
-    const notificationResponse = await resend.emails.send({
-      from: "Stackwise Contact Form <onboarding@resend.dev>",
-      to: ["stackwise7@gmail.com"],
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #22c55e; padding-bottom: 10px;">
-            New Contact Form Submission
-          </h2>
-          
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #22c55e;">Contact Details</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Project Type:</strong> ${project || 'Not specified'}</p>
+    console.log("Attempting to send notification email...");
+    let notificationResponse;
+    try {
+      notificationResponse = await resend.emails.send({
+        from: "Stackwise Contact <onboarding@resend.dev>",
+        to: ["stackwise7@gmail.com"],
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333; border-bottom: 2px solid #22c55e; padding-bottom: 10px;">
+              New Contact Form Submission
+            </h2>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #22c55e;">Contact Details</h3>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Project Type:</strong> ${project || 'Not specified'}</p>
+            </div>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #22c55e;">Message</h3>
+              <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; padding: 20px; background: #22c55e; color: white; border-radius: 8px;">
+              <p style="margin: 0; font-weight: bold;">New business opportunity! 🚀</p>
+            </div>
           </div>
-          
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #22c55e;">Message</h3>
-            <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
-          </div>
-          
-          <div style="text-align: center; margin-top: 30px; padding: 20px; background: #22c55e; color: white; border-radius: 8px;">
-            <p style="margin: 0; font-weight: bold;">New business opportunity! 🚀</p>
-          </div>
-        </div>
-      `,
-    });
+        `,
+      });
+      
+      console.log("Notification email response:", JSON.stringify(notificationResponse, null, 2));
+    } catch (emailError) {
+      console.error("Error sending notification email:", emailError);
+      return new Response(
+        JSON.stringify({ 
+          error: "Failed to send notification email",
+          success: false,
+          details: emailError instanceof Error ? emailError.message : String(emailError)
+        }),
+        {
+          status: 500,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
+    // Check if notification email failed
+    if (notificationResponse.error) {
+      console.error("Notification email failed:", notificationResponse.error);
+      return new Response(
+        JSON.stringify({ 
+          error: `Failed to send notification email: ${notificationResponse.error.message}`,
+          success: false,
+          errorDetails: notificationResponse.error
+        }),
+        {
+          status: 500,
+          headers: { 
+            "Content-Type": "application/json", 
+            ...corsHeaders 
+          },
+        }
+      );
+    }
 
     // Send confirmation email to the user
-    const confirmationResponse = await resend.emails.send({
-      from: "Stackwise <onboarding@resend.dev>",
-      to: [email],
-      subject: "Thank you for contacting Stackwise!",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #22c55e; padding-bottom: 10px;">
-            Thank you for reaching out, ${name}!
-          </h2>
-          
-          <p style="font-size: 16px; line-height: 1.6; color: #555;">
-            We've received your message and our team will get back to you within 24 hours.
-          </p>
-          
-          <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #22c55e;">What happens next?</h3>
-            <ul style="color: #555; line-height: 1.8;">
-              <li>Our team will review your project requirements</li>
-              <li>We'll prepare a customized proposal for you</li>
-              <li>You'll receive a detailed response within 24 hours</li>
-              <li>We can schedule a call to discuss your vision</li>
-            </ul>
-          </div>
-          
-          <div style="text-align: center; margin-top: 30px;">
-            <p style="color: #888; font-size: 14px;">
-              Best regards,<br>
-              <strong style="color: #22c55e;">The Stackwise Team</strong>
+    console.log("Attempting to send confirmation email...");
+    let confirmationResponse;
+    try {
+      confirmationResponse = await resend.emails.send({
+        from: "Stackwise <onboarding@resend.dev>",
+        to: [email],
+        subject: "Thank you for contacting Stackwise!",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333; border-bottom: 2px solid #22c55e; padding-bottom: 10px;">
+              Thank you for reaching out, ${name}!
+            </h2>
+            
+            <p style="font-size: 16px; line-height: 1.6; color: #555;">
+              We've received your message and our team will get back to you within 24 hours.
             </p>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="margin-top: 0; color: #22c55e;">What happens next?</h3>
+              <ul style="color: #555; line-height: 1.8;">
+                <li>Our team will review your project requirements</li>
+                <li>We'll prepare a customized proposal for you</li>
+                <li>You'll receive a detailed response within 24 hours</li>
+                <li>We can schedule a call to discuss your vision</li>
+              </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+              <p style="color: #888; font-size: 14px;">
+                Best regards,<br>
+                <strong style="color: #22c55e;">The Stackwise Team</strong>
+              </p>
+            </div>
           </div>
-        </div>
-      `,
-    });
+        `,
+      });
+      
+      console.log("Confirmation email response:", JSON.stringify(confirmationResponse, null, 2));
+    } catch (emailError) {
+      console.error("Error sending confirmation email:", emailError);
+      // Don't fail the whole request if confirmation fails
+      confirmationResponse = { error: { message: emailError instanceof Error ? emailError.message : String(emailError) } };
+    }
 
-    console.log("Notification email sent:", notificationResponse);
-    console.log("Confirmation email sent:", confirmationResponse);
+    // Prepare final response
+    const result = {
+      success: true,
+      message: "Emails processed successfully",
+      notificationId: notificationResponse.data?.id,
+      confirmationId: confirmationResponse.data?.id || null,
+      timestamp: new Date().toISOString()
+    };
 
+    if (confirmationResponse.error) {
+      console.warn("Confirmation email failed:", confirmationResponse.error);
+      result.message = "Notification sent successfully, but confirmation email failed";
+      // @ts-ignore - adding warning field
+      result.warning = `Confirmation email failed: ${confirmationResponse.error.message}`;
+    }
+
+    console.log("Final response:", result);
+    
     return new Response(
-      JSON.stringify({ 
-        success: true, 
-        message: "Emails sent successfully",
-        notificationId: notificationResponse.data?.id,
-        confirmationId: confirmationResponse.data?.id
-      }), 
+      JSON.stringify(result),
       {
         status: 200,
         headers: {
@@ -110,12 +303,17 @@ const handler = async (req: Request): Promise<Response> => {
         },
       }
     );
+
   } catch (error: any) {
-    console.error("Error in send-contact-email function:", error);
+    console.error("Unexpected error in handler:", error);
+    console.error("Error stack:", error.stack);
+    
     return new Response(
       JSON.stringify({ 
-        error: error.message,
-        success: false 
+        error: error.message || "Unknown error occurred",
+        success: false,
+        stack: error.stack,
+        timestamp: new Date().toISOString()
       }),
       {
         status: 500,
@@ -128,4 +326,11 @@ const handler = async (req: Request): Promise<Response> => {
   }
 };
 
-serve(handler);
+console.log("Starting email service...");
+console.log("Environment check:", {
+  hasApiKey: !!Deno.env.get("RESEND_API_KEY"),
+  denoVersion: Deno.version.deno,
+  timestamp: new Date().toISOString()
+});
+
+serve(handler, { port: 8000 });
