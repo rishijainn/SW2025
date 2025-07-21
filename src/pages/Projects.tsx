@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import project1 from "@/assets/beauty.jpeg";
 import project2 from "@/assets/hotel.jpeg";
 import project3 from "@/assets/port.jpeg";
-import project4 from '@/assets/tattoo.jpeg'
+import project4 from '@/assets/fashion.png'
 import project5 from '@/assets/se-logo.png'
-
+import project6 from '@/assets/tattoo.jpeg'
 
 const allProjects = [
   {
@@ -20,7 +20,15 @@ const allProjects = [
     liveUrl: "https://monarch-pi.vercel.app/",
     githubUrl: "#"
   },
-
+  {
+  title: "Fashion Website",
+  category: "Fashion & Lifestyle",
+  description: "A modern and stylish fashion store website with a sleek UI and dynamic product showcase.",
+  image: project4,
+  tech: ["React", "TypeScript", "Chart.js"],
+  liveUrl: "https://fashion-nu-rouge.vercel.app",
+  githubUrl: "#"
+},
   {
     title: "Cafe Website",
     category: "Hotel",
@@ -34,18 +42,18 @@ const allProjects = [
     title: "Tattoo Studio",
     category: "Art",
     description: "Tattoo shop website with artist portfolios, appointment scheduling, and service showcase.",
-    image: project4,
+    image: project6,
     tech: ["MERN Stack"],
-    liveUrl: "#",
+    liveUrl: "https://tattoo-seven-theta.vercel.app/",
     githubUrl: "#"
   },
    {
-      title: "Portfolios",
+      title: "Portfolio",
     category: "Personal",
     description: "Showcase your skills, works to different people to grow your work.",
     image: project3,
     tech: ["Next.js"],
-    liveUrl: "https://arjavs-inkwell-tales.vercel.app/",
+    liveUrl: "https://john-portfolio-umber.vercel.app",
     githubUrl: "#"
   },  {
     title: "Secreteye",
@@ -53,9 +61,10 @@ const allProjects = [
     description: "A GPS tracking app with tracker and geofencing providing services to track you belongings with ease.",
     image: project5,
     tech: ["Next.js", "React-Native", "Prisma"],
-    liveUrl: "#",
+    liveUrl: "",
     githubUrl: "#"
   },
+
 ];
 
 

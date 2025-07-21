@@ -139,7 +139,7 @@ const Contact = () => {
                       type="tel"
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 XXXXXXXXXX"
                       className="bg-muted/50 border-primary/20 focus:border-primary/40"
                     />
                   </div>

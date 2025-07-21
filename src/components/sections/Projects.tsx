@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import project1 from "@/assets/beauty.jpeg";
-import project2 from "@/assets/hotel.jpeg";
+import project2 from '@/assets/fashion.png'
 import project3 from "@/assets/port.jpeg";
 
 const projects = [
@@ -17,24 +17,24 @@ const projects = [
     liveUrl: "https://monarch-pi.vercel.app/",
     githubUrl: "#"
   },
+ 
   {
-    title: "Cafe Website",
-    category: "Hotels",
-    description: "Modernise your cafe/hotels with a newly created websites.",
-    image: project2,
-    tech: ["React", "TypeScript"],
-    liveUrl: "https://cafe-cool.vercel.app/",
-    githubUrl: "#"
-  },
-  {
-      title: "Portfolios",
+      title: "Portfolio",
     category: "Personal",
     description: "Showcase your skills, works to different people to grow your work.",
     image: project3,
     tech: ["MERN"],
-    liveUrl: "https://arjavs-inkwell-tales.vercel.app/",
+    liveUrl: "https://john-portfolio-umber.vercel.app",
     githubUrl: "#"
-  }
+  },  {
+  title: "Fashion Website",
+  category: "Fashion & Lifestyle",
+  description: "A modern and stylish fashion store website with a sleek UI and dynamic product showcase.",
+  image: project2,
+  tech: ["React", "TypeScript", "Chart.js"],
+  liveUrl: "https://fashion-nu-rouge.vercel.app",
+  githubUrl: "#"
+},
 ];
 
 const Projects = () => {

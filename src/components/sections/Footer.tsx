@@ -63,7 +63,6 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="font-bold text-lg">Quick Links</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#team" className="hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#projects" className="hover:text-primary transition-colors">Our Work</a></li>
               <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
               {/* <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
@@ -91,7 +90,7 @@ const Footer = () => {
                 <Github className="w-4 h-4" />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/stackwise-9a7390376" 
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Linkedin className="w-4 h-4" />
