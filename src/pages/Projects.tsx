@@ -55,15 +55,7 @@ const allProjects = [
     tech: ["Next.js"],
     liveUrl: "https://john-portfolio-umber.vercel.app",
     githubUrl: "#"
-  },  {
-    title: "Secreteye",
-    category: "Company",
-    description: "A GPS tracking app with tracker and geofencing providing services to track you belongings with ease.",
-    image: project5,
-    tech: ["Next.js", "React-Native", "Prisma"],
-    liveUrl: "",
-    githubUrl: "#"
-  },
+  }
 
 ];
 
