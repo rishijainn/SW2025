@@ -46,7 +46,7 @@ const Projects = () => {
             Our <span className="gradient-text">Work</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore some of our recent projects and see how we've helped businesses transform their online presence.
+            Explore some of our sample projects and see how we can help you transform your online presence.
           </p>
         </div>
         
