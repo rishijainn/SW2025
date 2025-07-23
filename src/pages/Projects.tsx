@@ -35,7 +35,7 @@ const allProjects = [
     description: "Modernise your cafe/hotels with a newly created websites.",
     image: project2,
     tech: ["React", "TypeScript", "Chart.js"],
-    liveUrl: "https://cafe-cool.vercel.app/",
+    liveUrl: "https://nomaic-chai-vibes.vercel.app/",
     githubUrl: "#"
   },
   {

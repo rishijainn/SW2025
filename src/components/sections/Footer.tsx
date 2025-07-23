@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Sparkles, 
-  Mail, 
-  Phone, 
+import {
+  Sparkles,
+  Mail,
+  Phone,
   MapPin,
   Github,
   Linkedin,
@@ -29,36 +29,44 @@ const Footer = () => {
               STACKWISE
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              We help businesses stand out online with handcrafted websites that speak for their brand. 
+              We help businesses stand out online with handcrafted websites that speak for their brand.
               Fast delivery, modern design, and exceptional support.
             </p>
             <div className="space-y-3">
-           <div className="flex items-center gap-3 text-sm">
-  <Mail className="w-4 h-4 text-primary" />
-  <a href="mailto:stackwise7@gmail.com" className="hover:text-primary transition-colors">
-    stackwise7@gmail.com
-  </a>
-</div>
+              <div className="flex items-center gap-3 text-sm">
+                <Mail className="w-4 h-4 text-primary" />
+                <a href="mailto:stackwise7@gmail.com" className="hover:text-primary transition-colors">
+                  stackwise7@gmail.com
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 text-sm">
+                <Phone className="w-4 h-4 text-primary" />
+                <a href="tel:+917357560577" className="hover:text-primary transition-colors">
+                  +91 73575 60577
+                </a>
+              </div>
 
               <div className="flex items-center gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-primary" />
                 <span>Jaipur, India | Available Globally</span>
               </div>
             </div>
+
           </div>
-          
+
           {/* Services */}
           <div className="space-y-6">
             <h3 className="font-bold text-lg">Services</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a  className="hover:text-primary transition-colors">Website Design</a></li>
-              <li><a  className="hover:text-primary transition-colors">Full-Stack Development</a></li>
-              <li><a  className="hover:text-primary transition-colors">Landing Pages</a></li>
-              <li><a  className="hover:text-primary transition-colors">Portfolio & Blog</a></li>
-              <li><a  className="hover:text-primary transition-colors">E-commerce Solutions</a></li>
+              <li><a className="hover:text-primary transition-colors">Website Design</a></li>
+              <li><a className="hover:text-primary transition-colors">Full-Stack Development</a></li>
+              <li><a className="hover:text-primary transition-colors">Landing Pages</a></li>
+              <li><a className="hover:text-primary transition-colors">Portfolio & Blog</a></li>
+              <li><a className="hover:text-primary transition-colors">E-commerce Solutions</a></li>
             </ul>
           </div>
-          
+
           {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="font-bold text-lg">Quick Links</h3>
@@ -70,41 +78,41 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <Separator className="mb-8" />
-        
+
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm text-muted-foreground text-center md:text-left">
             © 2024 Stackwise. All rights reserved. | Built by Coders Clan (The pioneers of Stackwise).
           </div>
-          
+
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">Follow us:</span>
             <div className="flex gap-3">
-              <a 
-                href="https://github.com/stackwise14" 
+              <a
+                href="https://github.com/stackwise14"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Github className="w-4 h-4" />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/stackwise-9a7390376" 
+              <a
+                href="https://www.linkedin.com/in/stackwise-9a7390376"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a 
-                href="https://www.instagram.com/stackwise14?igsh=cW84b3p1aXJlNWRx" 
+              <a
+                href="https://www.instagram.com/stackwise14?igsh=cW84b3p1aXJlNWRx"
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
               >
                 <Instagram className="w-4 h-4" />
               </a>
-            
+
             </div>
           </div>
-          
+
           {/* Back to Top */}
           <Button
             onClick={scrollToTop}
